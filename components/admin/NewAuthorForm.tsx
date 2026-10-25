@@ -36,7 +36,7 @@ export function NewAuthorForm() {
       <div className="flex flex-col gap-4">
         <div className="rounded-2xl border border-ink/10 bg-white/60 p-5">
           <h2 className="text-lg font-semibold text-ink">
-            {state.success.name} a été ajouté·e !
+            {state.success.name}{" "}a été ajouté·e !
           </h2>
           <p className="mt-1 text-sm text-ink-light">
             Fiche publique : /auteurs/{state.success.slug}

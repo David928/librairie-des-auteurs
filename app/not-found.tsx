@@ -9,7 +9,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center px-4 py-16 text-center sm:px-6">
-      <Logo size="lg" />
+      <Logo size="lg" priority={false} />
       <h1 className="mt-10 text-2xl font-semibold text-ink">
         Page introuvable
       </h1>

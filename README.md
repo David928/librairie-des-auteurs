@@ -1,4 +1,4 @@
-# La librairie des auteurs — Vichy
+# La librairie des auteurs — Cusset
 
 Web app (PWA) de la librairie : les **nouveautés** en rayon, les **séances
 de dédicace** à venir (avec ajout à l'agenda) et une **fiche par auteur**

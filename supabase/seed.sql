@@ -5,10 +5,10 @@
 insert into public.authors (slug, name, tagline, bio, is_local)
 values
   (
-    'claire-dumont-exemple',
-    'Claire Dumont (exemple)',
-    'Romancière · Polar',
-    'Fiche d''exemple. Claire écrit des polars qui se déroulent entre Vichy et les monts du Bourbonnais. Remplacez ce texte par la vraie biographie de l''auteur.',
+    'David-elian',
+    'David Elian',
+    'Romancière · Thriller',
+    'Fiche d''exemple. David écrit des Thrillers qui se déroulent à Vichy. Remplacez ce texte par la vraie biographie de l''auteur.',
     true
   ),
   (
@@ -25,8 +25,8 @@ select a.id, b.slug, b.title, b.summary, b.genre, b.publisher, b.price, true, b.
 from public.authors a
 join (
   values
-    ('claire-dumont-exemple', 'eaux-troubles-exemple', 'Eaux troubles', 'Un corps retrouvé au bord de l''Allier, une ville thermale qui garde ses secrets… Résumé d''exemple.', 'Polar / Thriller', 'Éditions Exemple', 19.90, true),
-    ('claire-dumont-exemple', 'la-source-noire-exemple', 'La Source noire', 'Deuxième enquête du commandant Morel. Résumé d''exemple.', 'Polar / Thriller', 'Éditions Exemple', 21.00, false),
+    ('David-Elian-exemple', 'eaux-troubles', 'Eaux troubles', 'Un corps retrouvé au bord de l''Allier, une ville thermale qui garde ses secrets… Résumé d''exemple.', 'Polar / Thriller', 'Éditions Exemple', 19.90, true),
+    ('David-Elian-exemple', 'la-source-noire-', 'La Source noire', 'Deuxième enquête du commandant Morel. Résumé d''exemple.', 'Polar / Thriller', 'Éditions Exemple', 21.00, false),
     ('paul-mercier-exemple', 'le-petit-ours-de-vichy-exemple', 'Le petit ours de Vichy', 'Un album tendre pour découvrir la ville. Résumé d''exemple.', 'Jeunesse', 'Éditions Exemple', 13.50, false)
 ) as b(author_slug, slug, title, summary, genre, publisher, price, is_signed)
   on a.slug = b.author_slug
@@ -37,8 +37,8 @@ select a.id, bk.id, 'Séance de dédicace',
   date_trunc('day', now()) + interval '10 days' + interval '13 hours',
   date_trunc('day', now()) + interval '10 days' + interval '17 hours'
 from public.authors a
-join public.books bk on bk.slug = 'eaux-troubles-exemple'
-where a.slug = 'claire-dumont-exemple';
+join public.books bk on bk.slug = 'eaux-troubles'
+where a.slug = 'David-Elian';
 
 insert into public.signings (author_id, book_id, title, starts_at, ends_at)
 select a.id, bk.id, 'Lecture et dédicace pour les enfants',

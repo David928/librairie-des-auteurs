@@ -30,7 +30,7 @@ export function AuthorCard({
           )}
           {bookCount != null && bookCount > 0 && (
             <span className="rounded-full bg-ink/5 px-2 py-0.5 text-ink-light">
-              {bookCount} livre{bookCount > 1 ? "s" : ""} en librairie
+              {bookCount}{" "}livre{bookCount > 1 ? "s" : ""} en librairie
             </span>
           )}
         </div>

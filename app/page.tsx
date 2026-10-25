@@ -28,7 +28,7 @@ export default async function Home() {
       <div className="border-b border-ink/10 bg-cream px-4 pb-6 pt-8 text-center sm:pt-10">
         <Logo size="lg" />
         <p className="mx-auto mt-4 max-w-xl text-sm text-ink-light">
-          {SITE.name} met à l&apos;honneur celles et ceux qui écrivent :
+          {SITE.name}{" "}met à l&apos;honneur celles et ceux qui écrivent :
           leurs livres, leurs histoires, et les rendez-vous pour les
           rencontrer en dédicace à {SITE.city}.
         </p>

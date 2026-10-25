@@ -21,6 +21,54 @@ export default function InfosPage() {
         demander conseil ou commander un livre qui n&apos;est pas en stock !
       </p>
 
+      <div className="mt-5 rounded-xl border border-ink/10 bg-white/60 px-4 py-4 text-sm text-ink-light">
+        <p className="font-semibold text-ink">Retrouvez-nous :</p>
+        <p className="mt-1">
+          📍 <span className="font-medium text-ink">{SITE.name}</span>
+          {SITE.address.map((line) => (
+            <span key={line}>
+              <br />
+              {line}
+            </span>
+          ))}
+        </p>
+        <p className="mt-2">
+          📞{" "}
+          <a
+            href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+            className="text-accent hover:underline"
+          >
+            {SITE.phone}
+          </a>
+          <br />
+          ✉️{" "}
+          <a
+            href={`mailto:${SITE.contactEmail}`}
+            className="break-all text-accent hover:underline"
+          >
+            {SITE.contactEmail}
+          </a>
+        </p>
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+            [SITE.name, ...SITE.address].join(" ")
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-block rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-white transition hover:bg-accent-light"
+        >
+          Voir l&apos;itinéraire →
+        </a>
+        <p className="mt-4 font-semibold text-ink">
+          🕒 Nos horaires d&apos;ouverture :
+        </p>
+        <ul className="mt-1 space-y-0.5">
+          {SITE.hours.map((line) => (
+            <li key={line}>• {line}</li>
+          ))}
+        </ul>
+      </div>
+
       <div className="mt-5 rounded-xl border border-accent/30 bg-accent/10 px-4 py-4 text-sm text-ink-light">
         <p className="font-semibold text-ink">📱 Installation</p>
         <p className="mt-1">
@@ -67,37 +115,6 @@ export default function InfosPage() {
             Confirmez avec <strong>Installer</strong>
           </li>
         </ol>
-      </div>
-
-      <div className="mt-5 rounded-xl border border-ink/10 bg-white/60 px-4 py-4 text-sm text-ink-light">
-        <p className="font-semibold text-ink">Retrouvez-nous :</p>
-        <p className="mt-1">
-          📍{" "}
-          {SITE.address.map((line, i) => (
-            <span key={line}>
-              {i > 0 && <br />}
-              {line}
-            </span>
-          ))}
-        </p>
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            SITE.address.join(" ")
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-white transition hover:bg-accent-light"
-        >
-          Voir l&apos;itinéraire →
-        </a>
-        <p className="mt-4 font-semibold text-ink">
-          🕒 Nos horaires d&apos;ouverture :
-        </p>
-        <ul className="mt-1 space-y-0.5">
-          {SITE.hours.map((line) => (
-            <li key={line}>• {line}</li>
-          ))}
-        </ul>
       </div>
 
       <p className="mt-6 text-center text-xs text-ink-light">

@@ -5,20 +5,24 @@
 export const SITE = {
   name: "La librairie des auteurs",
   shortName: "Librairie des auteurs",
-  city: "Vichy",
+  city: "Cusset",
   url: "https://librairie-des-auteurs.vercel.app",
   description:
-    "Les nouveautés, les séances de dédicace et les auteurs de La librairie des auteurs, à Vichy.",
+    "Les nouveautés, les séances de dédicace et les auteurs de La librairie des auteurs, à Cusset.",
   // Adresse affichée sur la page Infos et utilisée par défaut pour les dédicaces.
-  address: ["Centre Commercial Les 4 Chemins", "35 rue Lucas", "03200 Vichy"],
+  address: ["32 place Victor Hugo", "03300 Cusset"],
+  phone: "06 11 13 89 19",
   hours: [
-    "Lundi : 14h00 à 19h00",
-    "Mardi au samedi : 9h30 à 19h00",
-    "Dimanche : 14h30 à 19h00",
+    "Mardi : 9h30 – 19h",
+    "Mercredi : 14h30 – 18h30",
+    "Jeudi : 9h30 – 18h30",
+    "Vendredi : 9h30 – 13h",
+    "Samedi : 9h – 13h",
+    "Fermé le lundi et le dimanche",
   ],
   // Expéditeur des emails (doit être un expéditeur validé dans Brevo).
   emailFrom: "boutique@gravetincelle.com",
-  contactEmail: "contact@gravetincelle.com",
+  contactEmail: "lalibrairiedesauteurs@gmail.com",
   // Dossier de stockage des images publiées au nom de la librairie.
   uploadFolder: "librairie",
 } as const;

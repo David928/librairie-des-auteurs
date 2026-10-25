@@ -157,12 +157,15 @@ export default async function BookPage({
           </div>
 
           <p className="mt-4 text-xs text-ink-light">
-            Pour réserver ou commander ce livre, passez nous voir à la
-            librairie (voir{" "}
-            <Link href="/infos" className="text-accent hover:underline">
-              Infos pratiques
-            </Link>
-            ).
+            Pour réserver ou commander ce livre, passez nous voir ou
+            appelez la librairie au{" "}
+            <a
+              href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+              className="whitespace-nowrap text-accent hover:underline"
+            >
+              {SITE.phone}
+            </a>
+            .
           </p>
         </div>
       </div>

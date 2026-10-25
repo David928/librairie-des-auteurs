@@ -26,7 +26,7 @@ export function SplashScreen() {
       }`}
     >
       <div className="animate-[splash-in_0.4s_ease-out]">
-        <Logo size="lg" />
+        <Logo size="xl" />
       </div>
     </div>
   );
