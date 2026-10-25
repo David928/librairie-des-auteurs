@@ -52,3 +52,18 @@ h2 {
     transform: scale(1);
   }
 }
+
+/*
+ * Sur iPhone, Safari zoome automatiquement dès qu'on touche un champ dont le
+ * texte fait moins de 16px, et dans l'app installée ce zoom reste ensuite sur
+ * toutes les pages (texte coupé à droite, barre du bas hors écran). On force
+ * donc 16px pour tous les champs sur téléphone. Règle hors @layer : elle
+ * l'emporte sur les classes Tailwind comme text-sm.
+ */
+@media (max-width: 639px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
