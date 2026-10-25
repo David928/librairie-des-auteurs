@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { updateAuthor } from "@/app/admin/actions";
 import { ChangePasswordModal } from "@/components/admin/ChangePasswordModal";
+import { ImageField } from "@/components/admin/ImageField";
 import { FormError, FormSuccess } from "@/components/admin/FormMessages";
 import { useUploadSubmit } from "@/components/admin/useUploadSubmit";
 import {
-  hintClass,
   inputClass,
   labelClass,
   primaryButtonClass,
@@ -75,20 +75,12 @@ export function AuthorForm({
           className={inputClass}
         />
       </label>
-      <label className={labelClass}>
-        Photo (portrait)
-        <input
-          type="file"
-          name="photo"
-          accept="image/*"
-          className={inputClass}
-        />
-        {author.photo_url && (
-          <span className={hintClass}>
-            Laisser vide pour garder la photo actuelle.
-          </span>
-        )}
-      </label>
+      <ImageField
+        name="photo"
+        label="Photo (portrait)"
+        format="portrait"
+        currentUrl={author.photo_url}
+      />
       <div className="grid gap-4 sm:grid-cols-3">
         <label className={labelClass}>
           Site web

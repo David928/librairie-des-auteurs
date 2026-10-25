@@ -1,6 +1,7 @@
 "use client";
 
 import { createAnnouncement, updateAnnouncement } from "@/app/admin/annonces/actions";
+import { ImageField } from "@/components/admin/ImageField";
 import { FormError } from "@/components/admin/FormMessages";
 import { useUploadSubmit } from "@/components/admin/useUploadSubmit";
 import {
@@ -62,12 +63,12 @@ export function AnnouncementForm({
           className={inputClass}
         />
       </label>
-      <label className={labelClass}>
-        {announcement?.image_url
-          ? "Nouvelle photo (laisser vide pour garder l'actuelle)"
-          : "Photo (optionnelle)"}
-        <input type="file" name="image" accept="image/*" className={inputClass} />
-      </label>
+      <ImageField
+        name="image"
+        label="Photo (optionnelle)"
+        format="announcement"
+        currentUrl={announcement?.image_url}
+      />
       <label className={labelClass}>
         Date de fin (optionnelle, {MAX_ANNOUNCEMENT_DAYS} jours maximum)
         <input

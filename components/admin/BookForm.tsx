@@ -1,6 +1,7 @@
 "use client";
 
 import { createBook, updateBook } from "@/app/admin/livres/actions";
+import { ImageField } from "@/components/admin/ImageField";
 import { FormError } from "@/components/admin/FormMessages";
 import { useUploadSubmit } from "@/components/admin/useUploadSubmit";
 import {
@@ -59,12 +60,12 @@ export function BookForm({
           className={inputClass}
         />
       </label>
-      <label className={labelClass}>
-        {book?.cover_url
-          ? "Nouvelle couverture (laisser vide pour garder l'actuelle)"
-          : "Couverture (photo)"}
-        <input type="file" name="cover" accept="image/*" className={inputClass} />
-      </label>
+      <ImageField
+        name="cover"
+        label="Couverture"
+        format="cover"
+        currentUrl={book?.cover_url}
+      />
       <div className="grid gap-4 sm:grid-cols-2">
         <label className={labelClass}>
           Genre
