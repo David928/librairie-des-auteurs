@@ -20,8 +20,10 @@ export const SITE = {
     "Samedi : 9h – 13h",
     "Fermé le lundi et le dimanche",
   ],
-  // Expéditeur des emails (doit être un expéditeur validé dans Brevo).
-  emailFrom: "boutique@gravetincelle.com",
+  // Expéditeur des emails : doit être validé dans Brevo (Expéditeurs).
+  // À remplacer par une adresse sur un nom de domaine de la librairie dès
+  // qu'il y en aura un (meilleure arrivée en boîte de réception).
+  emailFrom: "lalibrairiedesauteurs@gmail.com",
   contactEmail: "lalibrairiedesauteurs@gmail.com",
   // Dossier de stockage des images publiées au nom de la librairie.
   uploadFolder: "librairie",
