@@ -19,10 +19,13 @@ export async function getSession(): Promise<Session | null> {
   } = await supabase.auth.getUser();
   if (!user) return null;
 
-  const superadminEmail = process.env.SUPERADMIN_EMAIL;
+  // SUPERADMIN_EMAIL peut contenir plusieurs emails séparés par des virgules.
+  const superadminEmails = (process.env.SUPERADMIN_EMAIL ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
   const superAdmin =
-    !!superadminEmail &&
-    user.email?.toLowerCase() === superadminEmail.toLowerCase();
+    !!user.email && superadminEmails.includes(user.email.toLowerCase());
 
   const { data: profile } = await supabase
     .from("profiles")

@@ -58,7 +58,7 @@ npx web-push generate-vapid-keys
 
 1. Supabase → **Authentication → Users → Add user** : créez votre compte
    (email + mot de passe, cochez « Auto Confirm User »).
-2. Mettez ce même email dans `SUPERADMIN_EMAIL`.
+2. Mettez ce même email dans `SUPERADMIN_EMAIL` (plusieurs comptes possibles, séparés par des virgules).
 3. Connectez-vous sur `/admin/login` : le panneau « Gestion de la
    librairie » apparaît.
 
