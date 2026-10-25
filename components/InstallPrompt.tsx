@@ -101,8 +101,7 @@ export function InstallPrompt() {
       <div className="w-full max-w-sm animate-[splash-in_0.3s_ease-out] rounded-2xl border border-ink/10 bg-cream-light p-4 shadow-lg">
         <div className="flex items-start gap-3">
           <Image
-            src="/icons/192"
-            unoptimized
+            src="/icon-192.png"
             alt=""
             width={44}
             height={44}
