@@ -16,7 +16,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending} className={primaryButtonClass}>
-      {pending ? "Création..." : "Créer le compte"}
+      {pending ? "En cours..." : "Relier ou créer le compte"}
     </button>
   );
 }
@@ -29,8 +29,10 @@ export function CreateAccountForm({ authorId }: { authorId: string }) {
   return (
     <form action={formAction} className="flex flex-col gap-3">
       <p className="text-sm text-ink-light">
-        Cet auteur n&apos;a pas encore de compte. Créez-en un pour qu&apos;il
-        puisse gérer lui-même sa fiche, ses livres et ses dédicaces.
+        Cette fiche n&apos;est reliée à aucun compte. Indiquez l&apos;email
+        de l&apos;auteur pour qu&apos;il gère lui-même sa fiche, ses livres et
+        ses dédicaces. S&apos;il a déjà un compte (un superadmin par
+        exemple), il est simplement relié ; sinon un compte est créé.
       </p>
       <FormError error={state.error} />
       <input type="hidden" name="authorId" value={authorId} />

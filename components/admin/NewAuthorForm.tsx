@@ -119,8 +119,8 @@ export function NewAuthorForm() {
         <p className={`mt-1.5 ${hintClass}`}>
           Renseignez-le pour que l&apos;auteur puisse gérer lui-même sa fiche,
           ses livres et ses dédicaces : un mot de passe est généré et envoyé
-          par email. Laissez vide pour une fiche gérée uniquement par la
-          librairie.
+          par email (s&apos;il a déjà un compte, il est simplement relié).
+          Laissez vide pour une fiche gérée uniquement par la librairie.
         </p>
       </div>
 

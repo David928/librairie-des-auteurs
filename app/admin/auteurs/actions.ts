@@ -14,22 +14,58 @@ import { revalidateCatalog } from "@/lib/revalidate";
 
 type Credentials = {
   email: string;
-  password: string;
+  /** null quand un compte existant a été relié : son mot de passe ne change pas. */
+  password: string | null;
   emailSent: boolean;
   emailError?: string;
 };
 
+/** Cherche un compte de connexion par email (l'API admin ne permet que de lister). */
+async function findUserIdByEmail(email: string): Promise<string | null> {
+  const admin = createAdminClient();
+  for (let page = 1; page <= 20; page++) {
+    const { data, error } = await admin.auth.admin.listUsers({
+      page,
+      perPage: 1000,
+    });
+    if (error) throw new Error(error.message);
+    const user = data.users.find((u) => u.email?.toLowerCase() === email);
+    if (user) return user.id;
+    if (data.users.length < 1000) return null;
+  }
+  return null;
+}
+
 /**
- * Crée un compte de connexion et le relie à la fiche auteur. En cas d'échec
- * après la création du compte, le compte est supprimé (pas de compte orphelin).
+ * Relie un compte de connexion à la fiche auteur. Si un compte existe déjà
+ * avec cet email (par exemple un superadmin qui est aussi auteur), il est
+ * simplement relié ; sinon un compte est créé et ses identifiants envoyés.
+ * En cas d'échec après la création, le compte est supprimé (pas d'orphelin).
  */
 async function createLoginForAuthor(
   author: { id: string; name: string; slug: string },
   email: string
 ): Promise<Credentials> {
   const admin = createAdminClient();
-  const password = generatePassword();
 
+  const existingId = await findUserIdByEmail(email);
+  if (existingId) {
+    const { data: linked } = await admin
+      .from("profiles")
+      .select("author_id")
+      .eq("id", existingId)
+      .maybeSingle();
+    if (linked) {
+      throw new Error("Ce compte est déjà relié à une autre fiche auteur.");
+    }
+    const { error } = await admin
+      .from("profiles")
+      .insert({ id: existingId, author_id: author.id });
+    if (error) throw new Error(error.message);
+    return { email, password: null, emailSent: false };
+  }
+
+  const password = generatePassword();
   const { data: userData, error: userError } =
     await admin.auth.admin.createUser({
       email,
@@ -37,11 +73,7 @@ async function createLoginForAuthor(
       email_confirm: true,
     });
   if (userError || !userData.user) {
-    throw new Error(
-      userError?.message === "A user with this email address has already been registered"
-        ? "Un compte existe déjà avec cet email."
-        : (userError?.message ?? "Impossible de créer le compte.")
-    );
+    throw new Error(userError?.message ?? "Impossible de créer le compte.");
   }
 
   const { error: profileError } = await admin

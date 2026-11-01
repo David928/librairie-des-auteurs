@@ -3,11 +3,22 @@ export function CredentialsBox({
 }: {
   credentials: {
     email: string;
-    password: string;
+    password: string | null;
     emailSent: boolean;
     emailError?: string;
   };
 }) {
+  if (credentials.password === null) {
+    return (
+      <div className="rounded-xl border border-accent/30 bg-accent/10 p-4 text-sm text-ink-light">
+        Le compte existant{" "}
+        <span className="font-medium text-ink">{credentials.email}</span> est
+        maintenant relié à cette fiche. Il se connecte avec son mot de passe
+        habituel.
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-xl border border-accent/30 bg-accent/10 p-4 text-sm">
       {credentials.emailSent ? (
